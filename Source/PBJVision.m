@@ -226,8 +226,8 @@ enum
         return;
      _cameraOrientation = cameraOrientation;
     
-    if ([_previewLayer.connection isVideoOrientationSupported])
-        [self _setOrientationForConnection:_previewLayer.connection];
+//    if ([_previewLayer.connection isVideoOrientationSupported])
+//        [self _setOrientationForConnection:_previewLayer.connection];
 }
 
 - (void)_setOrientationForConnection:(AVCaptureConnection *)connection
@@ -1102,7 +1102,7 @@ typedef void (^PBJVisionBlock)();
         [_delegate visionWillCapturePhoto:self];
     
     // freeze preview
-    _previewLayer.connection.enabled = NO;
+    //_previewLayer.connection.enabled = NO;
 }
 
 - (void)_didCapturePhoto
@@ -1263,7 +1263,7 @@ typedef void (^PBJVisionBlock)();
         _flags.videoWritten = NO;
 
         NSError *error = nil;
-        _assetWriter = [[AVAssetWriter alloc] initWithURL:_outputURL fileType:(NSString *)kUTTypeQuickTimeMovie error:&error];
+        _assetWriter = [[AVAssetWriter alloc] initWithURL:_outputURL fileType:(NSString *)kUTTypeMPEG4 error:&error];
         if (error) {
             DLog(@"error setting up the asset writer (%@)", error);
             _assetWriter = nil;
